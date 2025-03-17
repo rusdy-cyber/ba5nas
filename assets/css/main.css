@@ -2381,12 +2381,12 @@ section,
 }
 
 .features .nav-link.active {
-  background-color: var(--accent-color);
+  background-color: var(--primary-culor); /* Change the color of the toggle button */
   border-color: var(--accent-color);
 }
 
 .features .nav-link.active h4 {
-  color: var(--contrast-color);
+  color: var(--heading-color); /* Change the color of the toggle button */
 }
 
 .features .tab-content {
