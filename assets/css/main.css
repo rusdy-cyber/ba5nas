@@ -173,7 +173,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 60px;  /* Change the sise of the toggle button */
   margin-right: 8px;
 }
 
@@ -215,6 +215,12 @@ h6 {
 
   .header .logo {
     order: 1;
+  }
+
+  /* di bawah */
+  .header .logo img {
+    max-height: 40px;  /* Change the sise of the toggle button */
+    margin-right: 8px;
   }
 
   .header .btn-getstarted {
