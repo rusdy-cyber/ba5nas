@@ -24,7 +24,10 @@
   --heading-color: #2d465e; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #0d83fd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --contrast-color: #ffffff;
+  --primary-color: #0d700a;
+  --primary-culor: rgb(202, 199, 22);
+   /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -152,14 +155,16 @@ h6 {
 }
 
 .header .header-container {
-  background: var(--surface-color);
+  background: var(--primary-color); /* Change the color of the toggle button */
   border-radius: 50px;
   padding: 5px 25px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  
 }
 
 .scrolled .header .header-container {
-  background: color-mix(in srgb, var(--surface-color), transparent 5%);
+  background: color-mix(in srgb, var(--primary-color), transparent 5%);
+  
 }
 
 .header .logo {
@@ -176,13 +181,13 @@ h6 {
   font-size: 24px;
   margin: 0;
   font-weight: 500;
-  color: var(--heading-color);
+  color: var(--surface-color); /* Change the color of the toggle button */
 }
 
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
-  color: var(--contrast-color);
-  background: var(--accent-color);
+  color: var(--nav-color);
+  background: var(--primary-culor); /* Change the color of the toggle button */
   font-size: 14px;
   padding: 8px 20px;
   margin: 0 0 0 30px;
@@ -205,6 +210,7 @@ h6 {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px 5px 10px 15px;
+    
   }
 
   .header .logo {
@@ -245,7 +251,7 @@ h6 {
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--nav-color);
+    color: var(--nav-mobile-background-color); /* Change the color of the toggle button */
     padding: 18px 15px;
     font-size: 16px;
     font-family: var(--nav-font);
@@ -335,7 +341,7 @@ h6 {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
-    color: var(--nav-color);
+    color: var(--nav-mobile-background-color); /* Change the color of the toggle button */
     font-size: 28px;
     line-height: 0;
     margin-right: 10px;
