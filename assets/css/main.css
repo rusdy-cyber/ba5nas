@@ -184,8 +184,8 @@ h6 {
   color: var(--surface-color); /* Change the color of the toggle button */
 }
 
-.header .btn-getstarted,
-.header .btn-getstarted:focus {
+.header  .btn-getstarted,
+.header  .btn-getstarted:focus {
   color: var(--nav-color);
   background: var(--primary-culor); /* Change the color of the toggle button */
   font-size: 14px;
@@ -193,10 +193,13 @@ h6 {
   margin: 0 0 0 30px;
   border-radius: 50px;
   transition: 0.3s;
+  
 }
 
-.header .btn-getstarted:hover,
-.header .btn-getstarted:focus:hover {
+
+
+.header  .btn-getstarted:hover,
+.header  .btn-getstarted:focus:hover {
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
@@ -223,7 +226,7 @@ h6 {
     margin-right: 8px;
   }
 
-  .header .btn-getstarted {
+  .header  .btn-getstarted {
     order: 2;
     margin: 0 10px 0 0;
     padding: 6px 15px;
