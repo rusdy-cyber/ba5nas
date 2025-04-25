@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>BAZNAS-BENGKALIS</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <!-- Favicons -->
+  <link href="assets/img/logo/LOGO BAZNAS HD putih.png" rel="icon" />
+  <link href="assets/img/logo/LOGO BAZNAS HD putih.png" rel="apple-touch-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+</head>
+
+<body class="index-page">
+  <!-- bagian heder -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <!-- di bawah ini nav item fix -->
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <!-- justify-content-between / -->
+      <a href="#" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logo/1.png" alt="" />
+        <!-- <h1 class="sitename">BAZNAS</h1> -->
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" >Beranda</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Tentang Kami</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown">
+                <a href="#"><span>Profil</span>
+                  <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Kata Sambutan</a></li>
+                  <li><a href="#">Sejarah</a></li>
+                  <li><a href="#">Visi Misi</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Struktur</a></li>
+              <li><a href="#">Penghargaan</a></li>
+              <li><a href="#">Kontak</a></li>
+            </ul>
+          </li>
+          <li><a href="#features">Program</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Informasi</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Berita</a></li>
+              <li><a href="#">Laporan</a></li>
+              <li><a href="#">Pengumuman</a></li>
+              <li><a href="#faq">Tanya Jawab</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#"><span>Layanan</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#" class="active">Kalkulator Zakat</a></li>
+              <li><a href="#">Jemput</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#contact">kontak kami</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="https://dev.xen.to/sJu4WEQ9">BAYAR</a>
+    </div>
+  </header>
+  <!-- penutup heder -->
+
+  <!-- bagian main -->
+  <main class="main">
+
+    <!-- Call To Action 2 Section -->
+    <section id="call-to-action-2" class="call-to-action-2 section">
+    </section>
+    <!-- /Call To Action 2 Section -->
+
+    <!-- Contact calculator -->
+    <section id="zakat" class="services contact section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Kalkulator Zakat</h2>
+        <p>Gunakan kalkulator ini untuk menghitung zakat berdasarkan jenis penghasilan Anda.</p>
+      </div>
+    
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#zakat-penghasilan">Penghasilan</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#zakat-jasa">Jasa</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#zakat-industri">Industri</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#zakat-perdagangan">Perdagangan</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#zakat-emas">Emas</a></li>
+        </ul>
+    
+        <div class="tab-content mt-4">
+          <!-- Penghasilan -->
+          <div class="tab-pane fade show active" id="zakat-penghasilan">
+            <h3>Zakat Penghasilan</h3>
+            <label>Gaji per bulan (Rp):</label>
+            <input type="text" id="gaji" oninput="formatInput(this, 'terbilangGaji')" class="form-control" />
+            <div class="terbilang" id="terbilangGaji"></div>
+    
+            <label>Penghasilan lain-lain per bulan (Rp):</label>
+            <input type="text" id="lain" oninput="formatInput(this, 'terbilangLain')" class="form-control" />
+            <div class="terbilang" id="terbilangLain"></div>
+    
+            <button onclick="hitungZakat({idList: ['gaji', 'lain'], nisab: 6530000, hasilKey: 'penghasilan', outputId: 'hasilPenghasilan'})" class="btn mt-3">Hitung Zakat</button>
+            <div class="result" id="hasilPenghasilan"></div>
+            <button onclick="bayarZakat('penghasilan', hasilZakat.penghasilan)" class="btn mt-2">Bayar Zakat</button>
+          </div>
+    
+          <!-- Jasa -->
+          <div class="tab-pane fade" id="zakat-jasa">
+            <h3>Zakat Jasa</h3>
+            <label>Penghasilan dari jasa (Rp):</label>
+            <input type="text" id="penghasilanJasa" oninput="formatInput(this, 'terbilangJasa')" class="form-control" />
+            <div class="terbilang" id="terbilangJasa"></div>
+            <button onclick="hitungZakat({idList: ['penghasilanJasa'], nisab: 6530000, hasilKey: 'jasa', outputId: 'hasilJasa'})" class="btn mt-3">Hitung Zakat</button>
+            <div class="result" id="hasilJasa"></div>
+            <button onclick="bayarZakat('jasa', hasilZakat.jasa)" class="btn mt-2">Bayar Zakat</button>
+          </div>
+    
+          <!-- Industri -->
+          <div class="tab-pane fade" id="zakat-industri">
+            <h3>Zakat Industri</h3>
+            <label>Nilai Aset (Rp):</label>
+            <input type="text" id="asetIndustri" oninput="formatInput(this, 'terbilangAsetIndustri')" class="form-control" />
+            <div class="terbilang" id="terbilangAsetIndustri"></div>
+            <label>Hutang (Rp):</label>
+            <input type="text" id="utangIndustri" oninput="formatInput(this, 'terbilangUtangIndustri')" class="form-control" />
+            <div class="terbilang" id="terbilangUtangIndustri"></div>
+            <button onclick="(() => {
+              const total = getNumber('asetIndustri') - getNumber('utangIndustri');
+              hasilZakat.industri = total >= 6530000 ? total * 0.025 : 0;
+              document.getElementById('hasilIndustri').innerText = 'Zakat: Rp ' + Math.round(hasilZakat.industri).toLocaleString();
+            })()" class="btn mt-3">Hitung Zakat</button>
+            <div class="result" id="hasilIndustri"></div>
+            <button onclick="bayarZakat('industri', hasilZakat.industri)" class="btn mt-2">Bayar Zakat</button>
+          </div>
+    
+          <!-- Perdagangan -->
+          <div class="tab-pane fade" id="zakat-perdagangan">
+            <h3>Zakat Perdagangan</h3>
+            <label>Nilai Aset (Rp):</label>
+            <input type="text" id="asetPerdagangan" oninput="formatInput(this, 'terbilangAsetPerdagangan')" class="form-control" />
+            <div class="terbilang" id="terbilangAsetPerdagangan"></div>
+            <label>Laba (Rp):</label>
+            <input type="text" id="labaPerdagangan" oninput="formatInput(this, 'terbilangLabaPerdagangan')" class="form-control" />
+            <div class="terbilang" id="terbilangLabaPerdagangan"></div>
+            <button onclick="hitungZakat({idList: ['asetPerdagangan', 'labaPerdagangan'], nisab: 6530000, hasilKey: 'perdagangan', outputId: 'hasilPerdagangan'})" class="btn mt-3">Hitung Zakat</button>
+            <div class="result" id="hasilPerdagangan"></div>
+            <button onclick="bayarZakat('perdagangan', hasilZakat.perdagangan)" class="btn mt-2">Bayar Zakat</button>
+          </div>
+    
+          <!-- Emas -->
+          <div class="tab-pane fade" id="zakat-emas">
+            <h3>Zakat Emas</h3>
+            <label>Nilai Emas (Rp):</label>
+            <input type="text" id="nilaiEmas" oninput="formatInput(this, 'terbilangEmas')" class="form-control" />
+            <div class="terbilang" id="terbilangEmas"></div>
+            <button onclick="hitungZakat({idList: ['nilaiEmas'], nisab: 104550000, hasilKey: 'emas', outputId: 'hasilEmas'})" class="btn mt-3">Hitung Zakat</button>
+            <div class="result" id="hasilEmas"></div>
+            <button onclick="bayarZakat('emas', hasilZakat.emas)" class="btn mt-2">Bayar Zakat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+    const hasilZakat = {};
+    
+    function getNumber(id) {
+      const value = document.getElementById(id)?.value?.replace(/[^0-9]/g, '') || '0';
+      return parseInt(value, 10);
+    }
+    
+    function hitungZakat({ idList, nisab, hasilKey, outputId }) {
+      const total = idList.reduce((sum, id) => sum + getNumber(id), 0);
+      const zakat = total >= nisab ? total * 0.025 : 0;
+      hasilZakat[hasilKey] = zakat;
+      document.getElementById(outputId).innerText = 'Zakat: Rp ' + Math.round(zakat).toLocaleString();
+    }
+    function formatInput(input, targetTerbilangId) {
+  let value = input.value.replace(/[^0-9]/g, '');
+
+  // Format angka dengan titik ribuan
+  input.value = new Intl.NumberFormat('id-ID').format(value);
+
+  // Ubah ke angka
+  const number = parseInt(value, 10) || 0;
+
+  // Ubah ke huruf
+  document.getElementById(targetTerbilangId).innerText = number === 0 
+    ? '' 
+    : '(' + terbilang(number).trim() + ' rupiah)';
+}
+
+// Fungsi untuk mengubah angka ke teks (terbilang)
+function terbilang(bilangan) {
+  const angka = ["", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
+  const satuan = ["", "ribu", "juta", "miliar", "triliun"];
+
+  if (bilangan === 0) return "nol";
+
+  let hasil = "";
+  let i = 0;
+
+  while (bilangan > 0) {
+    const sisa = bilangan % 1000;
+    if (sisa > 0) {
+      let strSisa = "";
+      const ratusan = Math.floor(sisa / 100);
+      const puluhan = Math.floor((sisa % 100) / 10);
+      const satuanAkhir = sisa % 10;
+
+      if (ratusan > 0) {
+        strSisa += ratusan === 1 ? "seratus " : angka[ratusan] + " ratus ";
+      }
+
+      if (puluhan > 1) {
+        strSisa += angka[puluhan] + " puluh ";
+        if (satuanAkhir > 0) {
+          strSisa += angka[satuanAkhir] + " ";
+        }
+      } else if (puluhan === 1) {
+        if (satuanAkhir === 0) {
+          strSisa += "sepuluh ";
+        } else if (satuanAkhir === 1) {
+          strSisa += "sebelas ";
+        } else {
+          strSisa += angka[satuanAkhir] + " belas ";
+        }
+      } else if (satuanAkhir > 0) {
+        strSisa += angka[satuanAkhir] + " ";
+      }
+
+      hasil = strSisa + satuan[i] + " " + hasil;
+    }
+
+    bilangan = Math.floor(bilangan / 1000);
+    i++;
+  }
+
+  hasil = hasil.replace(/satu ribu/, "seribu");
+
+  return hasil.trim();
+}
+    </script>
+    
+    
+    
+    <!-- /Contact calculator -->
+
+    <!-- kerjasama/seponsor -->
+    <section id="clients" class="clients section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="" />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <!-- /kerjasama/seponsor  -->
+    
+  </main>
+  <!-- penutup main -->
+
+  <!-- bagian footer -->
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">iLanding</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3">
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+            </p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Hic solutasetp</h4>
+          <ul>
+            <li><a href="#">Molestiae accusamus iure</a></li>
+            <li><a href="#">Excepturi dignissimos</a></li>
+            <li><a href="#">Suscipit distinctio</a></li>
+            <li><a href="#">Dilecta</a></li>
+            <li><a href="#">Sit quas consectetur</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Nobis illum</h4>
+          <ul>
+            <li><a href="#">Ipsam</a></li>
+            <li><a href="#">Laudantium dolorum</a></li>
+            <li><a href="#">Dinera</a></li>
+            <li><a href="#">Trodelas</a></li>
+            <li><a href="#">Flexo</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span>
+        <strong class="px-1 sitename">iLanding</strong>
+        <span>All Rights Reserved</span>
+      </p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer>
+  <!-- penutup footer -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
