@@ -517,7 +517,7 @@ h6 {
   padding: 10px;
   border-top: 1px solid #ddd;
 }
-
+/*  */
 .chatbot-toggle-btn,
 .option-btn {
   width: 55px;
@@ -534,7 +534,7 @@ h6 {
   cursor: pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
+/*  */
 .option-btn {
   background-color: #25D366; /* WhatsApp green */
 }
@@ -567,26 +567,36 @@ h6 {
 }
 
 .chatbot-toggle-btn i {
-  font-size: 24px; /* Ukuran ikon bertanya */
+  /* Gaya ikon */
+  font-size: 24px;
+  position: relative; /* Untuk memposisikan span di dalamnya */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 /* pup */
 .chatbot-popup {
   position: absolute;
-  bottom: 100%; /* Tetap di atas tombol */
-  left: 50%;      /* Pusatkan horizontal */
-  transform: translateX(-50%); /* Koreksi pemusatan */
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  margin-bottom: 10px;
-  opacity: 1;       /* Selalu tampil */
-  visibility: visible; /* Selalu tampil */
-  transition: none; /* Hapus transisi karena selalu tampil */
-  z-index: 10000;
+    top: -35px; /* Posisi di atas ikon */
+    left: 200%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
+    color: white;
+    padding: 5px 8px; /* Ukuran lebih kecil */
+    border-radius: 3px; /* Radius lebih kecil */
+    font-size: 0.7em; /* Font lebih kecil */
+    white-space: nowrap; /* Agar teks tidak wrap */
+    opacity: 1; /* Selalu tampil */
+    visibility: visible; /* Selalu tampil */
+    z-index: 10000;
+}
+.chatbot-popup, p {
+  margin: 0;
+  padding: 5;
+  font-size: 11px;
+  color: #fff;
 }
 /*--------------------------------------------------------------
 # chat bot

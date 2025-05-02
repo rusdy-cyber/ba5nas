@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* Gaya CSS chatbot tetap di sini atau bisa dipindahkan ke file CSS terpisah */
         #chatbot-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 50px;
+            left: 20px;
             z-index: 9999;
         }
 
@@ -77,14 +75,12 @@
             position: relative;
         }
 
-        /* Default hidden state */
         .option-btn.hidden {
             opacity: 0;
             transform: translateY(20px);
             pointer-events: none;
         }
 
-        /* Show with transition */
         .option-btn.show {
             opacity: 1;
             transform: translateY(0);
@@ -98,94 +94,14 @@
         }
 
         .chatbot-toggle-btn i {
-            font-size: 24px; /* Ukuran ikon bertanya */
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">BeritaKita</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Kategori 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Kategori 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tentang Kami</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container mt-4">
-        <div class="jumbotron">
-            <h1 class="display-4">Berita Utama Hari Ini</h1>
-            <p class="lead">Informasi terkini dan terpercaya untuk Anda.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Baca Selengkapnya</a>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Berita Terbaru</h2>
-                <div class="card mb-3">
-                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Gambar Berita 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Judul Berita Pertama yang Menarik</h5>
-                        <p class="card-text">Ini adalah ringkasan singkat dari berita pertama. Anda bisa menambahkan beberapa kalimat deskripsi di sini.</p>
-                        <p class="card-text"><small class="text-muted">Diposting pada 2 Mei 2025</small></p>
-                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Gambar Berita 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Judul Berita Kedua yang Tidak Kalah Seru</h5>
-                        <p class="card-text">Ringkasan berita kedua bisa Anda tulis di bagian ini. Pastikan informasinya relevan dan menarik.</p>
-                        <p class="card-text"><small class="text-muted">Diposting pada 1 Mei 2025</small></p>
-                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                </div>
-            <div class="col-md-4">
-                <h2>Berita Populer</h2>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Judul Berita Populer 1
-                        <span class="badge badge-primary badge-pill">12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Judul Berita Populer 2
-                        <span class="badge badge-primary badge-pill">8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Judul Berita Populer 3
-                        <span class="badge badge-primary badge-pill">5</span>
-                    </li>
-                    </ul>
-
-                <h2 class="mt-4">Kategori</h2>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Politik</a>
-                    <a href="#" class="list-group-item list-group-item-action">Ekonomi</a>
-                    <a href="#" class="list-group-item list-group-item-action">Olahraga</a>
-                    <a href="#" class="list-group-item list-group-item-action">Teknologi</a>
-                    </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <p>&copy; 2025 BeritaKita. Hak Cipta Dilindungi.</p>
-    </footer>
+    <div id="navbar-container"></div>
+    <div id="content-container"></div>
+    <div id="footer-container"></div>
 
     <div id="chatbot-container">
         <div class="chatbot-box" id="chatbox">
@@ -214,7 +130,6 @@
                 </svg>
             </button>
         </div>
-        
 
         <button class="chatbot-toggle-btn" onclick="toggleOptions()" style="font-size: 24px;">
             <i class="fas fa-question-circle"></i>
@@ -225,6 +140,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        // Fungsi untuk memuat konten dari file HTML eksternal
+        async function loadContent(url, targetId) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                document.getElementById(targetId).innerHTML = html;
+            } catch (error) {
+                console.error(`Gagal memuat ${url}:`, error);
+                document.getElementById(targetId).innerHTML = '<p>Gagal memuat konten.</p>';
+            }
+        }
+
+        // Memuat navbar, konten, dan footer saat halaman dimuat
+        window.onload = function() {
+            loadContent('navbar.html', 'navbar-container');
+            loadContent('content.html', 'content-container');
+            loadContent('footer.html', 'footer-container');
+        };
+
         function toggleOptions() {
             const btnWa = document.getElementById("btn-wa");
             const btnChat = document.getElementById("btn-chat");
@@ -240,25 +174,46 @@
         }
 
         function sendMessage() {
-            const input = document.getElementById("userInput");
-            const msg = input.value.trim();
-            if (msg) {
-                const chatBody = document.getElementById("chatMessages");
-                const newMsg = document.createElement("div");
-                newMsg.classList.add("text-end", "mb-2");
-                newMsg.innerHTML = `<span class="badge bg-primary">${msg}</span>`;
-                chatBody.appendChild(newMsg);
-                input.value = "";
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
+    const input = document.getElementById("userInput");
+    const msg = input.value.trim().toLowerCase();
+    if (msg) {
+        const chatBody = document.getElementById("chatMessages");
+        appendUserMessage(msg); // Fungsi untuk menampilkan pesan pengguna
+
+        let response = "";
+        if (msg.includes("halo") || msg.includes("hai")) {
+            response = "Halo juga! Ada yang bisa saya bantu?";
+        } else if (msg.includes("berita")) {
+            response = "Anda mencari berita tentang apa?";
+        } else if (msg.includes("terima kasih")) {
+            response = "Sama-sama!";
+        } else {
+            response = "Maaf, saya belum mengerti pertanyaan Anda.";
         }
 
-        function sendToWhatsApp() {
-            const phone = '628123456789'; // Ganti dengan nomor tujuan
-            const message = encodeURIComponent("Halo! Saya ingin bertanya...");
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        if (response) {
+            setTimeout(() => {
+                appendBotMessage(response); // Fungsi untuk menampilkan pesan bot setelah jeda
+            }, 500);
         }
-    </script>
-    <script src="script.js"></script>
-</body>
-</html>
+
+        input.value = "";
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+}
+
+function appendUserMessage(message) {
+    const chatBody = document.getElementById("chatMessages");
+    const newMsg = document.createElement("div");
+    newMsg.classList.add("text-end", "mb-2");
+    newMsg.innerHTML = `<span class="badge bg-primary">${message}</span>`;
+    chatBody.appendChild(newMsg);
+}
+
+function appendBotMessage(message) {
+    const chatBody = document.getElementById("chatMessages");
+    const newMsg = document.createElement("div");
+    newMsg.classList.add("text-start", "mb-2");
+    newMsg.innerHTML = `<span class="badge bg-secondary">${message}</span>`;
+    chatBody.appendChild(newMsg);
+}
