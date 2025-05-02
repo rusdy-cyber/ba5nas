@@ -25,7 +25,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
 </head>
@@ -45,6 +45,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Beranda</a></li>
+          <li><a href="kalkulator.html">kalkulator</a></li>
           <li class="dropdown">
             <a href="#"><span>Tentang Kami</span>
               <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -1562,6 +1563,41 @@
   </footer>
   <!-- penutup footer -->
 
+  <!-- chat bot -->
+  <div id="chatbot-container">
+    <div class="chatbot-box" id="chatbox">
+        <div class="chatbot-header">Bantuan Chatbot</div>
+        <div class="chatbot-body" id="chatMessages">
+            <div class="text-muted small">Halo! Ada yang bisa kami bantu?</div>
+        </div>
+        <div class="chatbot-input">
+            <div class="input-group">
+                <input type="text" class="form-control" id="userInput" placeholder="Ketik pesan..." />
+                <button class="btn btn-primary" onclick="sendMessage()">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="option-group">
+        <button class="option-btn hidden" id="btn-wa" onclick="sendToWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white">
+                <path d="M16.004 2.003A13.96 13.96 0 0 0 2 16.004a13.82 13.82 0 0 0 2.04 7.173L2 30l6.933-1.972a13.884 13.884 0 0 0 7.071 1.884h.002A13.998 13.998 0 0 0 30 16.003c0-7.731-6.27-14-13.996-14zM16 26.928a11.89 11.89 0 0 1-6.044-1.635l-.432-.257-4.117 1.171 1.096-4.014-.281-.414A11.883 11.883 0 0 1 4.114 16 11.96 11.96 0 1 1 16 26.928zm6.395-8.204c-.349-.175-2.062-1.018-2.382-1.131-.319-.112-.551-.174-.782.174-.233.349-.896 1.131-1.1 1.364-.202.233-.404.262-.753.087-.349-.175-1.472-.542-2.804-1.728-1.037-.925-1.738-2.07-1.94-2.419-.202-.349-.021-.537.153-.712.158-.157.349-.407.524-.611.175-.202.233-.349.349-.582.117-.233.059-.437-.029-.611-.087-.174-.782-1.893-1.071-2.595-.282-.68-.57-.588-.782-.598l-.662-.012c-.233 0-.611.087-.931.437s-1.22 1.193-1.22 2.914 1.25 3.381 1.422 3.616c.175.233 2.456 3.747 5.952 5.256.832.359 1.48.572 1.985.731.834.265 1.593.228 2.191.138.669-.099 2.062-.84 2.353-1.648.291-.807.291-1.5.204-1.648-.087-.145-.32-.233-.669-.407z"/>
+            </svg>
+        </button>
+
+        <button class="option-btn hidden" id="btn-chat" onclick="toggleChat()" style="background-color: #0d6efd;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M20,2H4C2.89,2 2,2.89 2,4V22L6,18H20C21.1,18 22,17.1 22,16V4C22,2.89 21.1,2 20,2Z"/>
+            </svg>
+        </button>
+    </div>
+
+    <button class="chatbot-toggle-btn" onclick="toggleOptions()" style="font-size: 24px;">
+        <i class="fas fa-question-circle"></i>
+    </button>
+</div>
+  <!-- penutup chat bot -->
+
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -1576,6 +1612,41 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+      <script>
+        function toggleOptions() {
+            const btnWa = document.getElementById("btn-wa");
+            const btnChat = document.getElementById("btn-chat");
+            [btnWa, btnChat].forEach(btn => {
+                btn.classList.toggle("hidden");
+                btn.classList.toggle("show");
+            });
+        }
+
+        function toggleChat() {
+            const box = document.getElementById("chatbox");
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const msg = input.value.trim();
+            if (msg) {
+                const chatBody = document.getElementById("chatMessages");
+                const newMsg = document.createElement("div");
+                newMsg.classList.add("text-end", "mb-2");
+                newMsg.innerHTML = `<span class="badge bg-primary">${msg}</span>`;
+                chatBody.appendChild(newMsg);
+                input.value = "";
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        function sendToWhatsApp() {
+            const phone = '628123456789'; // Ganti dengan nomor tujuan
+            const message = encodeURIComponent("Halo! Saya ingin bertanya...");
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
 </body>
 
-</html>
+</html>       

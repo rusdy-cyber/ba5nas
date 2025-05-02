@@ -474,6 +474,106 @@ h6 {
   }
 }
 
+
+
+/*--------------------------------------------------------------
+# chat bot
+--------------------------------------------------------------*/
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  /* right: 20px; */
+  left: 20px;
+  z-index: 9999;
+}
+
+.chatbot-box {
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: none;
+}
+
+.chatbot-header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chatbot-body {
+  height: 300px;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+.chatbot-input {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chatbot-toggle-btn,
+.option-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #0d6efd;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.option-btn {
+  background-color: #25D366; /* WhatsApp green */
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+/* Default hidden state */
+.option-btn.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+/* Show with transition */
+.option-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.chatbot-toggle-btn i,
+.option-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.chatbot-toggle-btn i {
+  font-size: 24px; /* Ukuran ikon bertanya */
+}
+/*--------------------------------------------------------------
+# chat bot
+--------------------------------------------------------------*/
+
+
 /*--------------------------------------------------------------
 # Featured Posts Section
 --------------------------------------------------------------*/

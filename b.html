@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Terkini</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .chatbot-box {
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+        }
+
+        .chatbot-header {
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chatbot-body {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+
+        .chatbot-input {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chatbot-toggle-btn,
+        .option-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .option-btn {
+            background-color: #25D366; /* WhatsApp green */
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        /* Default hidden state */
+        .option-btn.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Show with transition */
+        .option-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .chatbot-toggle-btn i,
+        .option-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .chatbot-toggle-btn i {
+            font-size: 24px; /* Ukuran ikon bertanya */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BeritaKita</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kategori 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kategori 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tentang Kami</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="jumbotron">
+            <h1 class="display-4">Berita Utama Hari Ini</h1>
+            <p class="lead">Informasi terkini dan terpercaya untuk Anda.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Baca Selengkapnya</a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Berita Terbaru</h2>
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Gambar Berita 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Judul Berita Pertama yang Menarik</h5>
+                        <p class="card-text">Ini adalah ringkasan singkat dari berita pertama. Anda bisa menambahkan beberapa kalimat deskripsi di sini.</p>
+                        <p class="card-text"><small class="text-muted">Diposting pada 2 Mei 2025</small></p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Gambar Berita 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Judul Berita Kedua yang Tidak Kalah Seru</h5>
+                        <p class="card-text">Ringkasan berita kedua bisa Anda tulis di bagian ini. Pastikan informasinya relevan dan menarik.</p>
+                        <p class="card-text"><small class="text-muted">Diposting pada 1 Mei 2025</small></p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                </div>
+            <div class="col-md-4">
+                <h2>Berita Populer</h2>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Judul Berita Populer 1
+                        <span class="badge badge-primary badge-pill">12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Judul Berita Populer 2
+                        <span class="badge badge-primary badge-pill">8</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Judul Berita Populer 3
+                        <span class="badge badge-primary badge-pill">5</span>
+                    </li>
+                    </ul>
+
+                <h2 class="mt-4">Kategori</h2>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">Politik</a>
+                    <a href="#" class="list-group-item list-group-item-action">Ekonomi</a>
+                    <a href="#" class="list-group-item list-group-item-action">Olahraga</a>
+                    <a href="#" class="list-group-item list-group-item-action">Teknologi</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2025 BeritaKita. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <div id="chatbot-container">
+        <div class="chatbot-box" id="chatbox">
+            <div class="chatbot-header">Bantuan Chatbot</div>
+            <div class="chatbot-body" id="chatMessages">
+                <div class="text-muted small">Halo! Ada yang bisa kami bantu?</div>
+            </div>
+            <div class="chatbot-input">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="userInput" placeholder="Ketik pesan..." />
+                    <button class="btn btn-primary" onclick="sendMessage()">Kirim</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group">
+            <button class="option-btn hidden" id="btn-wa" onclick="sendToWhatsApp()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white">
+                    <path d="M16.004 2.003A13.96 13.96 0 0 0 2 16.004a13.82 13.82 0 0 0 2.04 7.173L2 30l6.933-1.972a13.884 13.884 0 0 0 7.071 1.884h.002A13.998 13.998 0 0 0 30 16.003c0-7.731-6.27-14-13.996-14zM16 26.928a11.89 11.89 0 0 1-6.044-1.635l-.432-.257-4.117 1.171 1.096-4.014-.281-.414A11.883 11.883 0 0 1 4.114 16 11.96 11.96 0 1 1 16 26.928zm6.395-8.204c-.349-.175-2.062-1.018-2.382-1.131-.319-.112-.551-.174-.782.174-.233.349-.896 1.131-1.1 1.364-.202.233-.404.262-.753.087-.349-.175-1.472-.542-2.804-1.728-1.037-.925-1.738-2.07-1.94-2.419-.202-.349-.021-.537.153-.712.158-.157.349-.407.524-.611.175-.202.233-.349.349-.582.117-.233.059-.437-.029-.611-.087-.174-.782-1.893-1.071-2.595-.282-.68-.57-.588-.782-.598l-.662-.012c-.233 0-.611.087-.931.437s-1.22 1.193-1.22 2.914 1.25 3.381 1.422 3.616c.175.233 2.456 3.747 5.952 5.256.832.359 1.48.572 1.985.731.834.265 1.593.228 2.191.138.669-.099 2.062-.84 2.353-1.648.291-.807.291-1.5.204-1.648-.087-.145-.32-.233-.669-.407z"/>
+                </svg>
+            </button>
+
+            <button class="option-btn hidden" id="btn-chat" onclick="toggleChat()" style="background-color: #0d6efd;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M20,2H4C2.89,2 2,2.89 2,4V22L6,18H20C21.1,18 22,17.1 22,16V4C22,2.89 21.1,2 20,2Z"/>
+                </svg>
+            </button>
+        </div>
+
+        <button class="chatbot-toggle-btn" onclick="toggleOptions()" style="font-size: 24px;">
+            <i class="fas fa-question-circle"></i>
+        </button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleOptions() {
+            const btnWa = document.getElementById("btn-wa");
+            const btnChat = document.getElementById("btn-chat");
+            [btnWa, btnChat].forEach(btn => {
+                btn.classList.toggle("hidden");
+                btn.classList.toggle("show");
+            });
+        }
+
+        function toggleChat() {
+            const box = document.getElementById("chatbox");
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const msg = input.value.trim();
+            if (msg) {
+                const chatBody = document.getElementById("chatMessages");
+                const newMsg = document.createElement("div");
+                newMsg.classList.add("text-end", "mb-2");
+                newMsg.innerHTML = `<span class="badge bg-primary">${msg}</span>`;
+                chatBody.appendChild(newMsg);
+                input.value = "";
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        function sendToWhatsApp() {
+            const phone = '628123456789'; // Ganti dengan nomor tujuan
+            const message = encodeURIComponent("Halo! Saya ingin bertanya...");
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
