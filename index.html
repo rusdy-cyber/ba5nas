@@ -1620,10 +1620,15 @@
         function toggleOptions() {
             const btnWa = document.getElementById("btn-wa");
             const btnChat = document.getElementById("btn-chat");
+            const popup = document.querySelector('.chatbot-popup');
             [btnWa, btnChat].forEach(btn => {
                 btn.classList.toggle("hidden");
                 btn.classList.toggle("show");
             });
+            // Toggle kelas show-popup pada elemen popup
+    if (popup) {
+        popup.classList.toggle('show-popup');
+    }
         }
 
         function toggleChat() {
