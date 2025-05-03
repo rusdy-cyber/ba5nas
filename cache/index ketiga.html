@@ -1569,8 +1569,11 @@
         <div class="chatbot-header">Pertanyaan Umum</div>
         <div class="chatbot-body" id="chatMessages">
           <p class="text-muted small">Pilih pertanyaan di bawah ini:</p>
-    <div class="chatbot-options">
-        </div>
+          <div class="chatbot-options">
+              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?">Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?</button><br>
+              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Bagaimana cara menghubungi dukungan pelanggan?">Bagaimana cara menghubungi dukungan pelanggan?</button><br>
+              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Jam operasional Anda?">Jam operasional Anda?</button><br>
+              </div>
         </div>
         <div class="chatbot-input">
             <div class="input-group">
@@ -1664,103 +1667,64 @@
     }
 });
 
-// pertanyyaan umum 
-
-const faqData = [
-    {
-        question: "Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?",
-        answer: "BAZNAS Kabupaten Bengkalis memiliki beberapa program unggulan seperti Bengkalis Cerdas (beasiswa dan bantuan pendidikan), Bengkalis Sehat (bantuan pengobatan dan alat kesehatan), Bengkalis Taqwa (pembinaan keagamaan), Bengkalis Peduli (bantuan untuk dhuafa dan korban bencana), serta Bengkalis Makmur (program pemberdayaan ekonomi produktif untuk mustahik)."
-    },
-    {
-        question: "Bagaimana mekanisme pendistribusian dana zakat yang dilakukan oleh BAZNAS Kabupaten Bengkalis?",
-        answer: "Dana zakat didistribusikan melalui proses verifikasi dan validasi data mustahik. Setelah itu, bantuan diberikan dalam bentuk uang tunai, barang, atau program pemberdayaan yang sesuai dengan kebutuhan mustahik dan sesuai dengan asnaf yang berhak menerima."
-    },
-    {
-        question: "Apa kriteria mustahik yang berhak menerima bantuan dari BAZNAS Kabupaten Bengkalis?",
-        answer: "Mustahik yang berhak menerima bantuan adalah mereka yang termasuk dalam delapan golongan (asnaf), seperti fakir, miskin, amil, muallaf, riqab, gharim, fisabilillah, dan ibnu sabil, dengan syarat telah diverifikasi oleh tim BAZNAS."
-    },
-    {
-        question: "Bagaimana BAZNAS Kabupaten Bengkalis memastikan transparansi dan akuntabilitas dalam pengelolaan dana?",
-        answer: "BAZNAS Kabupaten Bengkalis melakukan pelaporan secara berkala, baik ke publik maupun ke BAZNAS pusat. Laporan keuangan diaudit oleh auditor independen, dan informasi kegiatan disampaikan melalui media sosial serta website resmi BAZNAS."
-    },
-    {
-        question: "Apakah BAZNAS Kabupaten Bengkalis memiliki program pemberdayaan ekonomi umat?",
-        answer: "Ya, melalui program Bengkalis Makmur, BAZNAS memberikan bantuan modal usaha dan pelatihan kewirausahaan kepada mustahik untuk mendorong kemandirian ekonomi mereka."
-    },
-    {
-        question: "Bagaimana proses pengumpulan zakat dari para muzakki di Kabupaten Bengkalis?",
-        answer: "Zakat dikumpulkan melalui Unit Pengumpul Zakat (UPZ) di setiap instansi dan desa, serta melalui layanan pembayaran zakat secara langsung ke kantor BAZNAS atau melalui transfer bank dan layanan digital."
-    },
-    {
-        question: "Apa saja tantangan yang dihadapi BAZNAS Kabupaten Bengkalis dalam meningkatkan kesadaran masyarakat untuk berzakat?",
-        answer: "Tantangannya meliputi rendahnya literasi zakat, kurangnya pemahaman masyarakat tentang kewajiban zakat, serta kepercayaan terhadap lembaga amil zakat yang masih perlu terus dibangun melalui edukasi dan transparansi."
-    },
-    {
-        question: "Bagaimana cara masyarakat Kabupaten Bengkalis menyalurkan zakat melalui BAZNAS?",
-        answer: "Masyarakat dapat menyalurkan zakat melalui UPZ, datang langsung ke kantor BAZNAS Kabupaten Bengkalis, atau melalui layanan digital dan rekening resmi BAZNAS."
-    },
-    {
-        question: "Apakah BAZNAS Kabupaten Bengkalis bekerja sama dengan instansi pemerintah atau swasta dalam pelaksanaan program sosialnya?",
-        answer: "Ya, BAZNAS aktif menjalin kerja sama dengan instansi pemerintah, perusahaan swasta, dan organisasi masyarakat untuk memperluas jangkauan program sosial dan meningkatkan efektivitas pendistribusian zakat."
-    },
-    {
-        question: "Bagaimana dampak program BAZNAS terhadap pengentasan kemiskinan di Kabupaten Bengkalis?",
-        answer: "Program BAZNAS telah membantu banyak mustahik untuk bangkit dari keterpurukan ekonomi melalui bantuan langsung dan program pemberdayaan. Hal ini turut mendukung upaya pemerintah dalam mengurangi angka kemiskinan di Kabupaten Bengkalis."
-    }
-];
-
+// pertanyyaan
 document.addEventListener('DOMContentLoaded', function() {
-    const popup = document.querySelector('.chatbot-popup');
-    if (popup) {
-        popup.classList.add('show');
-    }
-
     const chatMessages = document.getElementById("chatMessages");
     const userInput = document.getElementById("userInput");
     const sendButton = document.querySelector('.chatbot-input .btn-primary');
-    const chatbotOptionsContainer = chatMessages.querySelector('.chatbot-options');
+    const chatbotOptions = chatMessages.querySelector('.chatbot-options');
 
-    if (chatbotOptionsContainer) {
-        chatbotOptionsContainer.addEventListener('click', function(event) {
+    if (chatbotOptions) {
+        chatbotOptions.addEventListener('click', function(event) {
             if (event.target.classList.contains('option-item')) {
                 const selectedQuestion = event.target.getAttribute('data-question');
 
+                // Tambahkan pertanyaan yang dipilih ke area chat sebagai pesan pengguna
                 const userMessageDiv = document.createElement("div");
                 userMessageDiv.classList.add("text-end", "mb-2");
                 userMessageDiv.innerHTML = `<span class="badge bg-primary">${selectedQuestion}</span>`;
                 chatMessages.appendChild(userMessageDiv);
 
+                // Kosongkan input dan fokuskan kembali (opsional)
                 userInput.value = "";
                 userInput.focus();
+
+                // Gulir ke bawah
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
-                const selectedAnswer = faqData.find(item => item.question === selectedQuestion)?.answer;
+                // Di sini Anda bisa menambahkan logika untuk menampilkan jawaban chatbot
+                // berdasarkan pertanyaan yang dipilih.
+                setTimeout(() => {
+                    // Contoh jawaban statis
+                    let botResponse = "";
+                    if (selectedQuestion === "Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?") {
+                        botResponse = "BAZNAS Kabupaten Bengkalis memiliki beberapa program unggulan seperti Bengkalis Cerdas (beasiswa dan bantuan pendidikan), Bengkalis Sehat (bantuan pengobatan dan alat kesehatan), Bengkalis Taqwa (pembinaan keagamaan), Bengkalis Peduli (bantuan untuk dhuafa dan korban bencana), serta Bengkalis Makmur (program pemberdayaan ekonomi produktif untuk mustahik)";
+                    } else if (selectedQuestion === "Bagaimana cara menghubungi dukungan pelanggan?") {
+                        botResponse = "Anda dapat menghubungi dukungan pelanggan kami melalui email di support@beritakita.com atau melalui formulir kontak di halaman Tentang Kami.";
+                    } else if (selectedQuestion === "Jam operasional Anda?") {
+                        botResponse = "Kami beroperasi 24 jam sehari, 7 hari seminggu untuk menyajikan berita terkini.";
+                    } else {
+                        botResponse = "Terima kasih atas pertanyaan Anda!";
+                    }
 
-                if (selectedAnswer) {
-                    setTimeout(() => {
+                    if (botResponse) {
                         const botMessageDiv = document.createElement("div");
                         botMessageDiv.classList.add("text-start", "mb-2");
-                        botMessageDiv.innerHTML = `<span class="badge bg-secondary">${selectedAnswer}</span>`;
+                        botMessageDiv.innerHTML = `<span class="badge bg-secondary">${botResponse}</span>`;
                         chatMessages.appendChild(botMessageDiv);
                         chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }, 500);
-                } else {
-                    setTimeout(() => {
-                        const botMessageDiv = document.createElement("div");
-                        botMessageDiv.classList.add("text-start", "mb-2", "text-muted", "small");
-                        botMessageDiv.innerHTML = `Maaf, jawaban untuk pertanyaan tersebut belum tersedia.`;
-                        chatMessages.appendChild(botMessageDiv);
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }, 500);
-                }
+                    }
+                }, 500);
             }
         });
     }
 
+    // Pastikan event listener untuk tombol kirim tetap berfungsi
     if (sendButton) {
         sendButton.addEventListener('click', sendMessage);
     }
 
+    // Jika pengguna menekan Enter di input, kirim pesan (opsional)
     userInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             sendMessage();
@@ -1768,37 +1732,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function toggleChat() {
-    const box = document.getElementById("chatbox");
-    const chatMessages = document.getElementById("chatMessages");
-    const chatbotOptionsContainer = chatMessages.querySelector('.chatbot-options');
-
-    if (box.style.display === "none") {
-        box.style.display = "block";
-        if (chatbotOptionsContainer) {
-            chatbotOptionsContainer.innerHTML = '';
-            faqData.forEach((faqItem) => {
-                const button = document.createElement('button');
-                button.classList.add('btn', 'btn-light', 'btn-sm', 'mb-2', 'option-item');
-                button.dataset.question = faqItem.question;
-                button.textContent = faqItem.question;
-                chatbotOptionsContainer.appendChild(button);
-                chatbotOptionsContainer.appendChild(document.createElement('br'));
-            });
-        } else {
-            chatMessages.innerHTML = `
-                <p class="text-muted small">Pilih pertanyaan di bawah ini:</p>
-                <div class="chatbot-options">
-                    ${faqData.map(item => `<button class="btn btn-light btn-sm mb-2 option-item" data-question="${item.question}">${item.question}</button><br>`).join('')}
-                </div>
-            `;
-        }
-    } else {
-        box.style.display = "none";
-    }
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
+// Modifikasi fungsi sendMessage agar tidak langsung menambahkan pesan awal
 function sendMessage() {
     const input = document.getElementById("userInput");
     const msg = input.value.trim();
@@ -1811,17 +1745,34 @@ function sendMessage() {
         input.value = "";
         chatBody.scrollTop = chatBody.scrollHeight;
 
-        // Tambahkan logika respons bot untuk input teks manual di sini jika diperlukan
+        // Di sini Anda bisa menambahkan logika untuk respons bot berdasarkan input pengguna
+        // (sama seperti contoh di dalam event listener untuk tombol opsi).
     }
 }
 
-function sendToWhatsApp() {
-    const phone = '6282284852905'; // Ganti dengan nomor tujuan
-    const message = encodeURIComponent("Halo! Saya ingin bertanya...");
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-}
-// penutup pertanyaan ini
+// Fungsi toggleChat perlu dimodifikasi agar menampilkan opsi pertanyaan saat dibuka pertama kali
+function toggleChat() {
+    const box = document.getElementById("chatbox");
+    const chatMessages = document.getElementById("chatMessages");
 
+    if (box.style.display === "none") {
+        box.style.display = "block";
+        // Periksa apakah pesan default masih ada, jika ya, ganti dengan opsi pertanyaan
+        if (chatMessages.children.length === 1 && chatMessages.firstChild.classList.contains("text-muted")) {
+            chatMessages.innerHTML = `
+                <p class="text-muted small">Pilih pertanyaan di bawah ini:</p>
+                <div class="chatbot-options">
+                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?">Apa saja program unggulan BAZNAS Kabupaten Bengkalis dalam menyalurkan zakat, infaq, dan sedekah?</button><br>
+                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Bagaimana cara menghubungi dukungan pelanggan?">Bagaimana cara menghubungi dukungan pelanggan?</button><br>
+                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Jam operasional Anda?">Jam operasional Anda?</button><br>
+                    </div>
+            `;
+        }
+    } else {
+        box.style.display = "none";
+    }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
     </script>
 </body>
 
