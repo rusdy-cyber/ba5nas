@@ -1572,12 +1572,12 @@
     <div class="chatbot-options">
         </div>
         </div>
-        <!-- <div class="chatbot-input">
+        <div class="chatbot-input">
             <div class="input-group">
                 <input type="text" class="form-control" id="userInput" placeholder="Ketik pesan..." />
                 <button class="btn btn-primary" onclick="sendMessage()">Kirim</button>
             </div>
-        </div> -->
+        </div>
     </div>
     
 
@@ -1665,20 +1665,6 @@
 });
 
 // pertanyyaan umum 
-// baru
-function displayBotMessage(message) {
-    const chatBody = document.getElementById("chatMessages");
-    const botMessageDiv = document.createElement("div");
-    botMessageDiv.classList.add("text-start", "mb-2");
-    const messageSpan = document.createElement("span");
-    messageSpan.classList.add("badge", "bg-secondary");
-    messageSpan.textContent = message; // Gunakan textContent untuk keamanan
-    botMessageDiv.appendChild(messageSpan);
-    chatBody.appendChild(botMessageDiv);
-    chatBody.scrollTop = chatBody.scrollHeight;
-}
-// fungsi untuk menampilkan pertanyaan umum
-
 
 const faqData = [
     {
@@ -1739,26 +1725,32 @@ document.addEventListener('DOMContentLoaded', function() {
             if (event.target.classList.contains('option-item')) {
                 const selectedQuestion = event.target.getAttribute('data-question');
 
-                // Tambahkan pertanyaan yang dipilih ke area chat sebagai pesan pengguna
                 const userMessageDiv = document.createElement("div");
                 userMessageDiv.classList.add("text-end", "mb-2");
-                const questionSpan = document.createElement("span");
-                questionSpan.classList.add("badge", "bg-primary");
-                questionSpan.textContent = selectedQuestion; // Gunakan textContent
-                userMessageDiv.appendChild(questionSpan);
+                userMessageDiv.innerHTML = `<span class="badge bg-primary">${selectedQuestion}</span>`;
                 chatMessages.appendChild(userMessageDiv);
 
+                userInput.value = "";
+                userInput.focus();
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
                 const selectedAnswer = faqData.find(item => item.question === selectedQuestion)?.answer;
 
                 if (selectedAnswer) {
                     setTimeout(() => {
-                        displayBotMessage(selectedAnswer); // Panggil fungsi baru untuk menampilkan jawaban bot
+                        const botMessageDiv = document.createElement("div");
+                        botMessageDiv.classList.add("text-start", "mb-2");
+                        botMessageDiv.innerHTML = `<span class="badge bg-secondary">${selectedAnswer}</span>`;
+                        chatMessages.appendChild(botMessageDiv);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
                     }, 500);
                 } else {
                     setTimeout(() => {
-                        displayBotMessage("Maaf, jawaban untuk pertanyaan tersebut belum tersedia."); // Panggil fungsi baru
+                        const botMessageDiv = document.createElement("div");
+                        botMessageDiv.classList.add("text-start", "mb-2", "text-muted", "small");
+                        botMessageDiv.innerHTML = `Maaf, jawaban untuk pertanyaan tersebut belum tersedia.`;
+                        chatMessages.appendChild(botMessageDiv);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
                     }, 500);
                 }
             }
