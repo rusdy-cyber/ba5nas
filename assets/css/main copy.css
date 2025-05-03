@@ -539,10 +539,17 @@ h6 {
   background-color: #25D366; /* WhatsApp green */
 }
 
+/* pertanyyan umum */
+.chatbot-options .option-item {
+  text-align: left;
+  width: 100%;
+}
+/*  */
+
 .option-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   position: relative;
 }
 

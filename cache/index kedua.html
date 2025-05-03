@@ -1568,12 +1568,7 @@
     <div class="chatbot-box" id="chatbox">
         <div class="chatbot-header">Pertanyaan Umum</div>
         <div class="chatbot-body" id="chatMessages">
-          <p class="text-muted small">Pilih pertanyaan di bawah ini:</p>
-          <div class="chatbot-options">
-              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Apa saja layanan yang Anda tawarkan?">Apa saja layanan yang Anda tawarkan?</button><br>
-              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Bagaimana cara menghubungi dukungan pelanggan?">Bagaimana cara menghubungi dukungan pelanggan?</button><br>
-              <button class="btn btn-light btn-sm mb-2 option-item" data-question="Jam operasional Anda?">Jam operasional Anda?</button><br>
-              </div>
+            <div class="text-muted small">Halo! Ada yang bisa kami bantu?</div>
         </div>
         <div class="chatbot-input">
             <div class="input-group">
@@ -1666,113 +1661,6 @@
         popup.classList.add('show');
     }
 });
-
-// pertanyyaan
-document.addEventListener('DOMContentLoaded', function() {
-    const chatMessages = document.getElementById("chatMessages");
-    const userInput = document.getElementById("userInput");
-    const sendButton = document.querySelector('.chatbot-input .btn-primary');
-    const chatbotOptions = chatMessages.querySelector('.chatbot-options');
-
-    if (chatbotOptions) {
-        chatbotOptions.addEventListener('click', function(event) {
-            if (event.target.classList.contains('option-item')) {
-                const selectedQuestion = event.target.getAttribute('data-question');
-
-                // Tambahkan pertanyaan yang dipilih ke area chat sebagai pesan pengguna
-                const userMessageDiv = document.createElement("div");
-                userMessageDiv.classList.add("text-end", "mb-2");
-                userMessageDiv.innerHTML = `<span class="badge bg-primary">${selectedQuestion}</span>`;
-                chatMessages.appendChild(userMessageDiv);
-
-                // Kosongkan input dan fokuskan kembali (opsional)
-                userInput.value = "";
-                userInput.focus();
-
-                // Gulir ke bawah
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-
-                // Di sini Anda bisa menambahkan logika untuk menampilkan jawaban chatbot
-                // berdasarkan pertanyaan yang dipilih.
-                setTimeout(() => {
-                    // Contoh jawaban statis
-                    let botResponse = "";
-                    if (selectedQuestion === "Apa saja layanan yang Anda tawarkan?") {
-                        botResponse = "Kami menawarkan layanan informasi berita terkini, kategori berita yang beragam, dan fitur pencarian berita.";
-                    } else if (selectedQuestion === "Bagaimana cara menghubungi dukungan pelanggan?") {
-                        botResponse = "Anda dapat menghubungi dukungan pelanggan kami melalui email di support@beritakita.com atau melalui formulir kontak di halaman Tentang Kami.";
-                    } else if (selectedQuestion === "Jam operasional Anda?") {
-                        botResponse = "Kami beroperasi 24 jam sehari, 7 hari seminggu untuk menyajikan berita terkini.";
-                    } else {
-                        botResponse = "Terima kasih atas pertanyaan Anda!";
-                    }
-
-                    if (botResponse) {
-                        const botMessageDiv = document.createElement("div");
-                        botMessageDiv.classList.add("text-start", "mb-2");
-                        botMessageDiv.innerHTML = `<span class="badge bg-secondary">${botResponse}</span>`;
-                        chatMessages.appendChild(botMessageDiv);
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }
-                }, 500);
-            }
-        });
-    }
-
-    // Pastikan event listener untuk tombol kirim tetap berfungsi
-    if (sendButton) {
-        sendButton.addEventListener('click', sendMessage);
-    }
-
-    // Jika pengguna menekan Enter di input, kirim pesan (opsional)
-    userInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
-    });
-});
-
-// Modifikasi fungsi sendMessage agar tidak langsung menambahkan pesan awal
-function sendMessage() {
-    const input = document.getElementById("userInput");
-    const msg = input.value.trim();
-    if (msg) {
-        const chatBody = document.getElementById("chatMessages");
-        const newMsg = document.createElement("div");
-        newMsg.classList.add("text-end", "mb-2");
-        newMsg.innerHTML = `<span class="badge bg-primary">${msg}</span>`;
-        chatBody.appendChild(newMsg);
-        input.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-
-        // Di sini Anda bisa menambahkan logika untuk respons bot berdasarkan input pengguna
-        // (sama seperti contoh di dalam event listener untuk tombol opsi).
-    }
-}
-
-// Fungsi toggleChat perlu dimodifikasi agar menampilkan opsi pertanyaan saat dibuka pertama kali
-function toggleChat() {
-    const box = document.getElementById("chatbox");
-    const chatMessages = document.getElementById("chatMessages");
-
-    if (box.style.display === "none") {
-        box.style.display = "block";
-        // Periksa apakah pesan default masih ada, jika ya, ganti dengan opsi pertanyaan
-        if (chatMessages.children.length === 1 && chatMessages.firstChild.classList.contains("text-muted")) {
-            chatMessages.innerHTML = `
-                <p class="text-muted small">Pilih pertanyaan di bawah ini:</p>
-                <div class="chatbot-options">
-                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Apa saja layanan yang Anda tawarkan?">Apa saja layanan yang Anda tawarkan?</button><br>
-                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Bagaimana cara menghubungi dukungan pelanggan?">Bagaimana cara menghubungi dukungan pelanggan?</button><br>
-                    <button class="btn btn-light btn-sm mb-2 option-item" data-question="Jam operasional Anda?">Jam operasional Anda?</button><br>
-                    </div>
-            `;
-        }
-    } else {
-        box.style.display = "none";
-    }
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
     </script>
 </body>
 
