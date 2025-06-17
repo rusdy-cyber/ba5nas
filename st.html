@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Struktur Organisasi (OSINT Style)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0 10px;
+    }
+  
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    #orgChartContainer {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+  
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  
+    .node {
+      cursor: pointer;
+    }
+  
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+  
+    .node text {
+      font-size: 14px;
+    }
+  
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+    }
+  
+    #info-panel {
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      max-width: 400px;
+      background: #f9f9f9;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  
+    @media (max-width: 600px) {
+      .node text {
+        font-size: 14px;
+      }
+  
+      #info-panel {
+        font-size: 13px;
+      }
+    }
+
+    #orgChartWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#orgChartContainer {
+  width: 100%;
+  height: auto;
+  min-width: 600px; /* grafik tidak terlalu kecil */
+}
+
+  </style>
+  
+</head>
+<body>
+
+<h2>Struktur Organisasi</h2>
+<div id="orgChartWrapper">
+    <svg id="orgChartContainer" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+  
+
+<div id="info-panel">Klik nama untuk melihat detailnya</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script>
+  const treeData = {
+    name: "Ketua",
+    title: "Ketua",
+    children: [
+      {
+        name: "Wakil Ketua",
+        title: "Wakil"
+      },
+      {
+        name: "Sekretaris",
+        title: "Sekretaris",
+        children: [
+          { name: "Pembantu Sekretaris", title: "Pembantu" },
+          { name: "OB", title: "Office Boy" }
+        ]
+      },
+      {
+        name: "Keuangan",
+        title: "Keuangan",
+        children: [
+          { name: "Pembantu Sekretaris", title: "Pembantu" },
+          { name: "OB", title: "Office Boy" }
+        ]
+      }
+    ]
+  };
+//   k
+
+// const svg = d3.select("svg")
+//   .append("g")
+//   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.select("svg")
+  .attr("viewBox", `0 0 ${960} ${600}`)
+  .attr("preserveAspectRatio", "xMidYMid meet")
+  .style("width", "100%")
+  .style("height", "auto");
+
+// k
+
+  const margin = {top: 20, right: 120, bottom: 20, left: 120},
+        width = 960 - margin.right - margin.left,
+        height = 600 - margin.top - margin.bottom;
+
+  let i = 0;
+  const duration = 750;
+
+  const tree = d3.layout.tree().size([height, width]);
+  const diagonal = d3.svg.diagonal().projection(d => [d.y, d.x]);
+
+  const svg = d3.select("svg")
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  let root = treeData;
+  root.x0 = height / 2;
+  root.y0 = 0;
+
+  function collapse(d) {
+    if (d.children) {
+      d._children = d.children;
+      d._children.forEach(collapse);
+      d.children = null;
+    }
+  }
+
+  root.children.forEach(collapse);
+  update(root);
+
+  function update(source) {
+    const nodes = tree.nodes(root).reverse(),
+          links = tree.links(nodes);
+
+    nodes.forEach(d => d.y = d.depth * 180);
+
+    const node = svg.selectAll("g.node")
+      .data(nodes, d => d.id || (d.id = ++i));
+
+    const nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", d => "translate(" + source.y0 + "," + source.x0 + ")")
+      .on("click", click);
+
+    nodeEnter.append("circle")
+      .attr("r", 1e-6)
+      .style("fill", d => d._children ? "lightsteelblue" : "#fff");
+
+    nodeEnter.append("text")
+      .attr("x", d => d.children || d._children ? -30 : 30)
+      .attr("dy", ".35em")
+      .attr("text-anchor", d => d.children || d._children ? "end" : "start")
+      .text(d => d.name)
+      .style("fill-opacity", 1e-6)
+      .on("click", d => {
+        d3.event.stopPropagation();
+        document.getElementById("info-panel").innerHTML = `
+          <h4>${d.name}</h4>
+          <p><strong>Jabatan:</strong> ${d.title}</p>
+        `;
+      });
+
+    const nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
+
+    nodeUpdate.select("circle")
+      .attr("r", 15)
+      .style("fill", d => d._children ? "lightsteelblue" : "#fff");
+
+    nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+    const nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", d => "translate(" + source.y + "," + source.x + ")")
+      .remove();
+
+    nodeExit.select("circle").attr("r", 1e-6);
+    nodeExit.select("text").style("fill-opacity", 1e-6);
+
+    const link = svg.selectAll("path.link")
+      .data(links, d => d.target.id);
+
+    link.enter().insert("path", "g")
+      .attr("class", "link")
+      .attr("d", d => {
+        const o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      });
+
+    link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+    link.exit().transition()
+      .duration(duration)
+      .attr("d", d => {
+        const o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      }).remove();
+
+    nodes.forEach(d => {
+      d.x0 = d.x;
+      d.y0 = d.y;
+    });
+  }
+
+  function click(d) {
+    if (d.children) {
+      d._children = d.children;
+      d.children = null;
+    } else {
+      d.children = d._children;
+      d._children = null;
+    }
+    update(d);
+  }
+</script>
+
+</body>
+</html>
